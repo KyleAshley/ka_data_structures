@@ -48,6 +48,21 @@ int main( int argc, char** argv) {
 	l.print();
 	cout << "List is size: " << l.size() << endl;
 
+	cout << "Deleting 2" << endl;
+	l.erase(2);
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
+	cout << "Deleting 0" << endl;
+	l.erase(0);
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
+	cout << "Deleting end" << endl;
+	l.erase(l.size());
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
 
 	return 0;
 
