@@ -25,6 +25,29 @@ int main( int argc, char** argv) {
 	cout << "Creating Linked List of size: " << num_nodes << endl;
 	kads::LinkedList<int> l(num_nodes, 0);
 	l.print();
+	cout << "List is size: " << l.size() << endl;
+
+	l.insert(1);
+	l.insert(2);
+	l.insert(3);
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
+	cout << "Inserting at begining" << endl;
+	l.insert(4, 0);
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
+	cout << "Inserting at end" << endl;
+	l.insert(5, l.size()+1);
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
+	cout << "Inserting at 2" << endl;
+	l.insert(6, 2);
+	l.print();
+	cout << "List is size: " << l.size() << endl;
+
 
 	return 0;
 

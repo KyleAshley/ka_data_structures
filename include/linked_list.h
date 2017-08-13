@@ -22,16 +22,26 @@ namespace kads
 			LinkedList();
 			~LinkedList();
 
+			// create a list with 'size' nodes all initialized with 'value'
 			LinkedList(int size, T value);
 
-			void print();
+			// inserts a new node with 'value' at the end of the list
+			void insert(T value);	
+			// inserts a new node with 'value' at index 'idx'
+			void insert(T value, int idx);	
+
+			// returns the size of the list	
 			int size();
 
-			Node<T>* head;
-			Node<T>* tail;
+			// prints each element in the list
+			void print();
+
+			
 
 		private:
-
+			Node<T>* head;	
+			Node<T>* tail;
+			int num_nodes;
 
 	};
 
