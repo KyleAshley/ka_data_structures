@@ -21,18 +21,17 @@ include_directories(${INCLUDE_DIR})
 set(DATA_STRUCTURES_LIB_SRC
   ${CMAKE_SOURCE_DIR}/src/node.cpp
   ${CMAKE_SOURCE_DIR}/src/linked_list.cpp
+  ${CMAKE_SOURCE_DIR}/src/dyn_array.cpp
 )
 
-# main test source code
-set(DATA_STRUCTURES_TEST_SRC
-  ${CMAKE_SOURCE_DIR}/src/test_linked_list.cpp
-)
 
 add_library(data_structures SHARED ${DATA_STRUCTURES_LIB_SRC})
 
 # create the data structures library
-add_executable(test ${DATA_STRUCTURES_TEST_SRC} )
+add_executable(test_ll ${CMAKE_SOURCE_DIR}/src/test_linked_list.cpp )
+add_executable(test_da ${CMAKE_SOURCE_DIR}/src/test_dyn_array.cpp )
 
-target_link_libraries(test data_structures)
+target_link_libraries(test_ll data_structures )
+target_link_libraries(test_da data_structures )
 
 
