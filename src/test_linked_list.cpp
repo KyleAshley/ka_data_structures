@@ -68,15 +68,45 @@ int main( int argc, char** argv) {
 	cout << l.at(l.size()-1) << endl;
 	cout << l.at(l.size()-3) << endl;
 
-	cout << "Popping" << endl;
+	cout << "Pop back" << endl;
 	l.pop_back();
 	l.print();
-	cout << "Popping" << endl;
+	cout << "Pop back" << endl;
 	l.pop_back();
 	l.print();
-	cout << "Popping" << endl;
+	cout << "Pop back" << endl;
 	l.pop_back();
 	l.print();
+
+	cout << "Push back" << endl;
+	l.push_back(5);
+	l.print();
+
+	cout << "Push back" << endl;
+	l.push_back(8);
+	l.print();
+
+	cout << "Pop front" << endl;
+	l.pop_front();
+	l.print();
+
+	cout << "Pop front" << endl;
+	l.pop_front();
+	l.print();
+
+	cout << "Pop front" << endl;
+	l.pop_front();
+	l.print();
+
+	cout << "Push front" << endl;
+	l.push_front(11);
+	l.print();
+
+	cout << "Push front" << endl;
+	l.push_front(12);
+	l.print();
+
+
 
 
 	return 0;

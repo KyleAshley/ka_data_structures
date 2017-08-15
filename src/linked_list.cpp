@@ -131,6 +131,20 @@ namespace kads
 		return;		
 	}
 
+	// inserts a new node at the front of the list
+	// Complexity: O(1)
+	template <class T> 
+	void LinkedList<T>::push_front(T val)
+	{
+		Node<T>* new_node = new Node<T>(val);
+		new_node->next = this->head;
+		new_node->prev = NULL;
+		this->head->prev = new_node;
+		this->head = new_node;
+		
+		return;		
+	}
+
 	// erases node at the end of the list
 	// Complexity: O(1)
 	template <class T> 
@@ -140,6 +154,20 @@ namespace kads
 		Node<T>* tmp = this->tail;
 		this->tail = this->tail->prev;
 		this->tail->next = NULL;
+		this->num_nodes--;
+
+		delete tmp;
+	}
+
+	// erases node at the front of the list
+	// Complexity: O(1)
+	template <class T> 
+	void LinkedList<T>::pop_front()
+	{
+		
+		Node<T>* tmp = this->head;
+		this->head = this->head->next;
+		this->head->prev = NULL;
 		this->num_nodes--;
 
 		delete tmp;
