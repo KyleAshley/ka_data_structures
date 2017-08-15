@@ -36,6 +36,9 @@ namespace kads
 			// - size of list is decremented
 			void erase(int idx);
 
+			// erase a range of elements in the list
+			T at(int idx);
+
 			// returns the size of the list	
 			int size();
 

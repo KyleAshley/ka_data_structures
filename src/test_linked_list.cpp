@@ -59,9 +59,14 @@ int main( int argc, char** argv) {
 	cout << "List is size: " << l.size() << endl;
 
 	cout << "Deleting end" << endl;
-	l.erase(l.size());
+	l.erase(l.size()-1);
 	l.print();
 	cout << "List is size: " << l.size() << endl;
+
+	cout << l.at(0) << endl;
+	cout << l.at(1) << endl;
+	cout << l.at(l.size()-1) << endl;
+	cout << l.at(l.size()-3) << endl;
 
 
 	return 0;

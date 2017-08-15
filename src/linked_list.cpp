@@ -137,7 +137,7 @@ namespace kads
 	void LinkedList<T>::erase(int idx)
 	{
 		// check the index is valid
-		if(idx > this->num_nodes+1 || idx < 0)
+		if(idx >= this->num_nodes || idx < 0)
 		{
 			cerr << "(!) Invalid index for erase at index: " << idx << endl; 
 			return;
@@ -155,7 +155,7 @@ namespace kads
 			this->head->prev = NULL;
 		}
 		// delete the tail
-		else if(idx == this->num_nodes)
+		else if(idx == this->num_nodes-1)
 		{
 			node = this->tail;
 			this->tail = this->tail->prev;
@@ -179,6 +179,31 @@ namespace kads
 		this->num_nodes--;
 		return;
 		
+	}
+
+	// returns the value at index 
+	template <class T> 
+	T LinkedList<T>::at(int idx)
+	{
+		// check the index is valid
+		if(idx >= this->num_nodes || idx < 0)
+		{
+			cerr << "(!) Invalid index at: " << idx << endl; 
+			return (T)(NULL);
+
+		}
+
+		else
+		{
+			int i = 0;
+			Node<T>* curr = this->head;
+			while(curr != NULL && i < idx)
+			{
+				curr = curr->next;
+				i++;
+			}
+			return curr->value;
+		}
 	}
 
 
