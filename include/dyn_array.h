@@ -36,7 +36,9 @@ namespace kads
 
 			// returns the size of the array
 			int size();
-			
+
+			inline T const& operator[](int index) const { return this->pArray[index]; } 
+			inline T& operator[](int index) { return this->pArray[index]; } 
 
 		private:
 			T* pArray;

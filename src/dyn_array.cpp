@@ -22,10 +22,11 @@ namespace kads
 	template <class T> 
 	DynArray<T>::~DynArray()
 	{
-
+		delete [] pArray;
 	}
 
 	// creates a new carray with 'num_nodes' elements initialized to 'val'
+	// Complexity: O(n)
 	template <class T> 
 	DynArray<T>::DynArray(int num_nodes, T val)
 	{	
@@ -33,17 +34,22 @@ namespace kads
 		if(num_nodes > 0)
 		{
 			this->pArray = new T[num_nodes];
+
+			// assign an initial value to each element
+			for(int i=0; i<num_nodes; i++)
+			{
+				this->pArray[i] = val;
+			}
+
+			// set the size of the array
+			this->num_elem = num_nodes;
 		}
 
-		// assign an initial value to each element
-		for(int i=0; i<num_nodes; i++)
-			this->pArray[i] = val;
-
-		// set the size of the array
-		this->num_elem = num_nodes;
+		
 	}
 
 	// adds an element at the end of the array increasing size by 1
+	// Complexity: O(n)
 	template <class T> 
 	void DynArray<T>::push_back(T val)
 	{
@@ -56,7 +62,7 @@ namespace kads
 		{
 			new_arr[i] = this->pArray[i];
 		}
-		new_arr[new_size] = val;
+		new_arr[new_size-1] = val;
 		
 		// copy it over
 		T* tmp = pArray;
@@ -68,10 +74,42 @@ namespace kads
 
 	}
 
+	// inserts an element at the specified index increasing size by 1
 	template <class T> 
 	void DynArray<T>::insert(T val, int idx)
 	{
-	
+		if(idx < 0 || idx > this->num_elem)
+		{
+			cerr << "Invalid index for insert at index: " << idx << endl;
+			return;
+		}
+
+		// create a new array of size=1
+		int new_size = this->num_elem+1;
+		T* new_arr = new T[new_size];
+
+		// copy old values over
+		for(int i=0; i<idx; i++)
+		{
+			new_arr[i] = this->pArray[i];
+		}
+		new_arr[idx] = val;
+		// copy old values over
+		for(int i=idx+1; i<new_size; i++)
+		{
+			new_arr[i] = this->pArray[i-1];
+		}
+		
+		// copy it over
+		T* tmp = this->pArray;
+		this->pArray = new_arr;
+
+		// set the new size
+		this->num_elem = new_size;
+
+		// free the old array
+		delete [] tmp;
+		
 	}
 
 
