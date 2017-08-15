@@ -75,6 +75,7 @@ namespace kads
 	}
 
 	// inserts an element at the specified index increasing size by 1
+	// Complexity: O(n)
 	template <class T> 
 	void DynArray<T>::insert(T val, int idx)
 	{
@@ -112,11 +113,40 @@ namespace kads
 		
 	}
 
-
+	// delete element at index 'idx' decreasing size by 1
 	template <class T> 
 	void DynArray<T>::erase(int idx)
 	{
+		if(idx < 0 || idx > this->num_elem)
+		{
+			cerr << "Invalid index for erase at index: " << idx << endl;
+			return;
+		}
+
+		// create a new array of size-1
+		int new_size = this->num_elem-1;
+		T* new_arr = new T[new_size];
+
+		// copy old values over
+		for(int i=0; i<idx; i++)
+		{
+			new_arr[i] = this->pArray[i];
+		}
+		// copy old values over
+		for(int i=idx+1; i<this->num_elem; i++)
+		{
+			new_arr[i-1] = this->pArray[i];
+		}
 		
+		// copy it over
+		T* tmp = this->pArray;
+		this->pArray = new_arr;
+
+		// set the new size
+		this->num_elem = new_size;
+
+		// free the old array
+		delete [] tmp;
 	}
 
 	// return the number of elements in the array
