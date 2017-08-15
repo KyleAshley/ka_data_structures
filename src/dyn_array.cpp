@@ -114,6 +114,7 @@ namespace kads
 	}
 
 	// delete element at index 'idx' decreasing size by 1
+	// O(n)
 	template <class T> 
 	void DynArray<T>::erase(int idx)
 	{

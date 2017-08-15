@@ -27,7 +27,12 @@ namespace kads
 
 			// inserts a new node with 'value' at the end of the list, 
 			// - size of list is incremented
-			void insert(T value);	
+			void push_back(T value);	
+
+			// erases node at the end of the list, 
+			// - size of list is decremented
+			void pop_back();
+
 			// inserts a new node with 'value' at index 'idx'
 			// - size of list is incremented
 			void insert(T value, int idx);	

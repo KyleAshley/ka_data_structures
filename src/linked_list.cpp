@@ -66,7 +66,7 @@ namespace kads
 	void LinkedList<T>::insert(T val, int idx)
 	{
 		// check if the index is valid
-		if(idx > this->num_nodes+1 || idx < 0)
+		if(idx > this->num_nodes || idx < 0)
 		{
 			cerr << "(!) Invalid index for insert at index: " << idx << endl; 
 			return;
@@ -82,7 +82,7 @@ namespace kads
 			this->head = new_node;
 		}
 		// insert at tail
-		else if(idx == this->num_nodes+1)
+		else if(idx == this->num_nodes)
 		{
 			this->tail->next = new_node;
 			new_node->prev = this->tail;
@@ -110,7 +110,7 @@ namespace kads
 	// inserts a new node at the end of the list
 	// Complexity: O(1)
 	template <class T> 
-	void LinkedList<T>::insert(T val)
+	void LinkedList<T>::push_back(T val)
 	{
 		Node<T>* new_node = new Node<T>(val);
 		new_node->next = NULL;
@@ -131,7 +131,21 @@ namespace kads
 		return;		
 	}
 
-	// inserts a new node at the end of the list
+	// erases node at the end of the list
+	// Complexity: O(1)
+	template <class T> 
+	void LinkedList<T>::pop_back()
+	{
+		
+		Node<T>* tmp = this->tail;
+		this->tail = this->tail->prev;
+		this->tail->next = NULL;
+		this->num_nodes--;
+
+		delete tmp;
+	}
+
+	// deletes node at position 'idx' of the list
 	// Complexity: O(n)
 	template <class T> 
 	void LinkedList<T>::erase(int idx)
@@ -182,6 +196,7 @@ namespace kads
 	}
 
 	// returns the value at index 
+	// Complexity: O(n)
 	template <class T> 
 	T LinkedList<T>::at(int idx)
 	{

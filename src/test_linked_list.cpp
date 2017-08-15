@@ -21,15 +21,15 @@ using namespace std;
 int main( int argc, char** argv) {
 
 	cout << "Testing Linked List.." << endl;
-	int num_nodes = 10;
+	int num_nodes = 2;
 	cout << "Creating Linked List of size: " << num_nodes << endl;
 	kads::LinkedList<int> l(num_nodes, 0);
 	l.print();
 	cout << "List is size: " << l.size() << endl;
 
-	l.insert(1);
-	l.insert(2);
-	l.insert(3);
+	l.push_back(1);
+	l.push_back(2);
+	l.push_back(3);
 	l.print();
 	cout << "List is size: " << l.size() << endl;
 
@@ -39,7 +39,7 @@ int main( int argc, char** argv) {
 	cout << "List is size: " << l.size() << endl;
 
 	cout << "Inserting at end" << endl;
-	l.insert(5, l.size()+1);
+	l.insert(5, l.size());
 	l.print();
 	cout << "List is size: " << l.size() << endl;
 
@@ -67,6 +67,16 @@ int main( int argc, char** argv) {
 	cout << l.at(1) << endl;
 	cout << l.at(l.size()-1) << endl;
 	cout << l.at(l.size()-3) << endl;
+
+	cout << "Popping" << endl;
+	l.pop_back();
+	l.print();
+	cout << "Popping" << endl;
+	l.pop_back();
+	l.print();
+	cout << "Popping" << endl;
+	l.pop_back();
+	l.print();
 
 
 	return 0;
