@@ -34,6 +34,9 @@ namespace kads
 			// - size of array is decremented
 			void erase(int idx);
 
+			// returns the value at index 'idx' with boundary checking
+			T at(int idx);
+
 			// returns the size of the array
 			int size();
 

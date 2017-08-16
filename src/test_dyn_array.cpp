@@ -73,13 +73,13 @@ int main( int argc, char** argv) {
 		cout << arr[i] << endl;
 	cout << "---------------------" << endl;
 
-	arr.erase(6);
+	arr.erase(5);
 
 	for(int i=0; i<arr.size(); i++)
 		cout << arr[i] << endl;
 	cout << "---------------------" << endl;
 
-	arr.erase(6);
+	arr.erase(4);
 
 	for(int i=0; i<arr.size(); i++)
 		cout << arr[i] << endl;

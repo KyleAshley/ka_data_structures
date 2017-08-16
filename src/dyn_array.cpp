@@ -50,6 +50,7 @@ namespace kads
 
 	// adds an element at the end of the array increasing size by 1
 	// Complexity: O(n)
+	// TODO: make this amortized O(n) by allocating extra space a-la-vector
 	template <class T> 
 	void DynArray<T>::push_back(T val)
 	{
@@ -114,11 +115,11 @@ namespace kads
 	}
 
 	// delete element at index 'idx' decreasing size by 1
-	// O(n)
+	// Complexity: O(n)
 	template <class T> 
 	void DynArray<T>::erase(int idx)
 	{
-		if(idx < 0 || idx > this->num_elem)
+		if(idx < 0 || idx >= this->num_elem)
 		{
 			cerr << "Invalid index for erase at index: " << idx << endl;
 			return;
@@ -150,6 +151,21 @@ namespace kads
 		delete [] tmp;
 	}
 
+	// returns the value at index 'idx' with boundary checking
+	// Complexity: O(1)
+	template <class T> 
+	T DynArray<T>::at(int idx)
+	{
+		if(idx < 0 || idx > this->num_elem)
+		{
+			T ret;
+			return ret;
+		}
+
+		return this->pArray[idx];
+
+	}
+
 	// return the number of elements in the array
 	// Complexity: O(1)
 	// - size is kept track of internally
@@ -165,5 +181,6 @@ namespace kads
 	template class DynArray<int>;
 	template class DynArray<float>;
 	template class DynArray<double>;
+	template class DynArray<string>;
 
 }

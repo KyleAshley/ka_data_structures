@@ -25,7 +25,7 @@ namespace kads
 	LinkedList<T>::~LinkedList()
 	{
 		Node<T>* curr = this->head;
-		Node<T>* next = curr->next;;
+		Node<T>* next = curr->next;
 		while(next != NULL)
 		{
 			next = curr->next;
@@ -141,7 +141,7 @@ namespace kads
 		new_node->prev = NULL;
 		this->head->prev = new_node;
 		this->head = new_node;
-		
+
 		return;		
 	}
 
@@ -280,5 +280,6 @@ namespace kads
 	template class LinkedList<int>;
 	template class LinkedList<float>;
 	template class LinkedList<double>;
+	template class LinkedList<string>;
 
 }
