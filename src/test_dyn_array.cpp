@@ -13,6 +13,7 @@
 #include <ctype.h>
 
 #include "dyn_array.h"
+#include "linked_list.h"
 
 using namespace std;
 
@@ -23,6 +24,9 @@ int main( int argc, char** argv) {
 	cout << "Testing Dynamic Array.." << endl;
 	int num_nodes = 3;
 	cout << "Creating Dynamic Array of size: " << num_nodes << endl;
+	kads::DynArray<kads::LinkedList<pair<string, int> > > arr(3);
+
+	/*
 	kads::DynArray<int> arr(num_nodes, 0);
 	cout << "Size: " << arr.size() << endl;
 
@@ -84,6 +88,7 @@ int main( int argc, char** argv) {
 	for(int i=0; i<arr.size(); i++)
 		cout << arr[i] << endl;
 	cout << "---------------------" << endl;
+	*/
 
 
 	return 0;

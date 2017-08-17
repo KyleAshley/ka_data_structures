@@ -22,7 +22,6 @@ unsigned int hashfunc(string key, unsigned int table_size);
 
 unsigned int hashfunc(string key, unsigned int table_size)
 {
-	cout << key << endl;
 	unsigned int i=0;
 	int seed = 37;
 	unsigned int hash = 0;
@@ -42,7 +41,13 @@ int main( int argc, char** argv) {
 	// create a dictionary
 	unsigned int size = 100;
 	kads::Dictionary<string, int> dict( size, hashfunc );
-	dict.insert("hello", 1);
+	dict.insert("hello", 10);
+	cout << dict.search("hello") << endl;
+
+	dict.erase("hello");
+	cout << dict.search("hello") << endl;
+
+
 	return 0;
 
 }

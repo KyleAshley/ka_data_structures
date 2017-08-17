@@ -21,8 +21,25 @@ using namespace std;
 int main( int argc, char** argv) {
 
 	cout << "Testing Linked List.." << endl;
-	int num_nodes = 2;
+	int num_nodes = 0;
 	cout << "Creating Linked List of size: " << num_nodes << endl;
+	//kads::LinkedList<std::pair<string, int> > l(num_nodes, std::make_pair("hello", 10));
+	kads::LinkedList<std::pair<string, int> > l;
+	for(int i=0; i<l.size(); i++)
+	{
+		cout << l.at(i).first << endl;
+	}
+
+	l.push_back(make_pair("hello2", 20));
+	cout << "Size: " << l.size() << endl;
+
+	for(int i=0; i<l.size(); i++)
+	{
+		cout << l.at(i).first << endl;
+	}
+	l.erase(0);
+
+	/*
 	kads::LinkedList<int> l(num_nodes, 0);
 	
 	cout << "List is size: " << l.size() << endl;
@@ -74,20 +91,11 @@ int main( int argc, char** argv) {
 	cout << "Pop back" << endl;
 	l.pop_back();
 	
-	cout << "Pop back" << endl;
-	l.pop_back();
-	
 	cout << "Push back" << endl;
 	l.push_back(5);
 	
 	cout << "Push back" << endl;
 	l.push_back(8);
-	
-	cout << "Pop front" << endl;
-	l.pop_front();
-	
-	cout << "Pop front" << endl;
-	l.pop_front();
 	
 	cout << "Pop front" << endl;
 	l.pop_front();
@@ -97,6 +105,7 @@ int main( int argc, char** argv) {
 	
 	cout << "Push front" << endl;
 	l.push_front(12);
+	*/
 	
 
 	return 0;

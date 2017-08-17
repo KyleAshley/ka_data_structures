@@ -44,7 +44,7 @@ namespace kads
 			// pointer to hash function (set by constructor)
 			unsigned int (*pHash)(KeyType, unsigned int);
 
-			DynArray<LinkedList<std::pair<KeyType, ValueType> > >* pTable;
+			DynArray<LinkedList<std::pair<KeyType, ValueType> > > pTable;
 
 
 	};

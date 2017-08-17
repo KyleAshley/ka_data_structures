@@ -24,7 +24,11 @@ namespace kads
 	template <class T> 
 	LinkedList<T>::~LinkedList()
 	{
+		
 		Node<T>* curr = this->head;
+		if(curr == NULL)
+			return;
+
 		Node<T>* next = curr->next;
 		while(next != NULL)
 		{
@@ -32,6 +36,7 @@ namespace kads
 			curr = next;
 			delete curr;
 		}
+
 	}
 
 	// initializes a new list of Nodes of size 'size' with values 0
@@ -126,8 +131,9 @@ namespace kads
 			new_node->prev = this->tail;
 			this->tail->next = new_node;
 			this->tail = new_node;
-			this->num_nodes++;
 		}
+
+		this->num_nodes++;
 		return;		
 	}
 
@@ -141,6 +147,7 @@ namespace kads
 		new_node->prev = NULL;
 		this->head->prev = new_node;
 		this->head = new_node;
+		this->num_nodes++;
 
 		return;		
 	}

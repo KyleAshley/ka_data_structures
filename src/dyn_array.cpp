@@ -25,6 +25,21 @@ namespace kads
 		delete [] pArray;
 	}
 
+	// creates a new carray with 'num_nodes' elements
+	// Complexity: O(n)
+	template <class T> 
+	DynArray<T>::DynArray(int num_nodes)
+	{	
+		// create the array
+		if(num_nodes > 0)
+		{
+			this->pArray = new T[num_nodes];
+
+			// set the size of the array
+			this->num_elem = num_nodes;
+		}
+	}
+
 	// creates a new carray with 'num_nodes' elements initialized to 'val'
 	// Complexity: O(n)
 	template <class T> 
@@ -44,8 +59,6 @@ namespace kads
 			// set the size of the array
 			this->num_elem = num_nodes;
 		}
-
-		
 	}
 
 	// adds an element at the end of the array increasing size by 1
@@ -178,6 +191,7 @@ namespace kads
 
 
 	// manually specify what datatypes are acceptable
+	// https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file
 	template class DynArray<int>;
 	template class DynArray<float>;
 	template class DynArray<double>;

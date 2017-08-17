@@ -22,6 +22,9 @@ namespace kads
 			DynArray();
 			~DynArray();
 
+			// create a list with 'size' nodes
+			DynArray(int size);
+
 			// create a list with 'size' nodes all initialized with 'value'
 			DynArray(int size, T value);
 
