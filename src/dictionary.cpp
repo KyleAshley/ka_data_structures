@@ -13,10 +13,18 @@ namespace kads
 	// ctor
 	template <class KeyType, class ValueType, class ContainerType> 
 	Dictionary<KeyType, ValueType, ContainerType>::Dictionary(unsigned int table_size, 
-															  unsigned int (*hash)(string, 
-															  unsigned int) )
+															  unsigned int (*hash)(string, unsigned int) )
 	{
-		this->*pHash = *hash;
+		this->pHash = hash;
+		this->size = table_size;
+	}
+
+	// ctor
+	template <class KeyType, class ValueType, class ContainerType> 
+	Dictionary<KeyType, ValueType, ContainerType>::Dictionary()
+	{
+		this->pHash = NULL;
+		this->size = 0;
 	}
 
 	// dtor
@@ -53,6 +61,7 @@ namespace kads
 
 
 	// manually specify what datatypes are acceptable
+	// custom array containers
 	template class Dictionary<int, int, DynArray<int> >;
 	template class Dictionary<int, float, DynArray<float> >;
 	template class Dictionary<int, double, DynArray<double> >;
@@ -72,5 +81,26 @@ namespace kads
 	template class Dictionary<string, float, DynArray<float> >;
 	template class Dictionary<string, double, DynArray<double> >;
 	template class Dictionary<string, string, DynArray<string> >;
+
+	// STL versions
+	template class Dictionary<int, int, vector<int> >;
+	template class Dictionary<int, float, vector<float> >;
+	template class Dictionary<int, double, vector<double> >;
+	template class Dictionary<int, string, vector<string> >;
+
+	template class Dictionary<float, int, vector<int> >;
+	template class Dictionary<float, float, vector<float> >;
+	template class Dictionary<float, double, vector<double> >;
+	template class Dictionary<float, string, vector<string> >;
+
+	template class Dictionary<double, int, vector<int> >;
+	template class Dictionary<double, float, vector<float> >;
+	template class Dictionary<double, double, vector<double> >;
+	template class Dictionary<double, string, vector<string> >;
+
+	template class Dictionary<string, int, vector<int> >;
+	template class Dictionary<string, float, vector<float> >;
+	template class Dictionary<string, double, vector<double> >;
+	template class Dictionary<string, string, vector<string> >;
 
 }

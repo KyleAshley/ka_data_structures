@@ -21,6 +21,7 @@ namespace kads
 		public:
 
 			// default ctor and dtor
+			Dictionary();
 			Dictionary(unsigned int table_size, unsigned int (*hash)(string, unsigned int) );
 			~Dictionary();
 
@@ -34,11 +35,14 @@ namespace kads
 			// - size of array is decremented
 			void erase(KeyType key);
 
-			// pointer to hash function (set by constructor)
-			unsigned int (Dictionary::*pHash)(string, unsigned int);
+			
 
 		private:
-			
+			// size of the hash table
+			unsigned int size;
+
+			// pointer to hash function (set by constructor)
+			unsigned int (*pHash)(string, unsigned int);
 
 
 	};

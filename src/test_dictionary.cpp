@@ -16,12 +16,12 @@
 
 using namespace std;
 
-int hash(string key, int table_size);
+unsigned int hashfunc(string key, unsigned int table_size);
 
-unsigned int hash(string key, unsigned int table_size)
+unsigned int hashfunc(string key, unsigned int table_size)
 {
 	cout << key << endl;
-	int i=0;
+	unsigned int i=0;
 	int seed = 37;
 	unsigned int hash = 0;
 	while(i < key.size())
@@ -38,8 +38,8 @@ int main( int argc, char** argv) {
 	cout << "Testing Dictionary.." << endl;
 
 	// create a dictionary
-	kads::Dictionary<string, int, vector> dict( unsigned int (*hash)(string, unsigned int) );
-	dict.hash("hello", 10);
+	unsigned int size = 100;
+	kads::Dictionary<string, int, vector<int> > dict( size, hashfunc );
 
 	return 0;
 
