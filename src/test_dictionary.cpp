@@ -12,6 +12,8 @@
 #include <iostream>
 #include <ctype.h>
 
+#include "linked_list.h"
+#include "dyn_array.h"
 #include "dictionary.h"
 
 using namespace std;
@@ -39,8 +41,8 @@ int main( int argc, char** argv) {
 
 	// create a dictionary
 	unsigned int size = 100;
-	kads::Dictionary<string, int, vector<int> > dict( size, hashfunc );
-
+	kads::Dictionary<string, int> dict( size, hashfunc );
+	dict.insert("hello", 1);
 	return 0;
 
 }

@@ -183,4 +183,14 @@ namespace kads
 	template class DynArray<double>;
 	template class DynArray<string>;
 
+	template class DynArray<kads::LinkedList<int> >;
+	template class DynArray<kads::LinkedList<float> >;
+	template class DynArray<kads::LinkedList<double> >;
+	template class DynArray<kads::LinkedList<string> >;
+
+	template class DynArray<kads::LinkedList<std::pair<string, int> > >;
+	template class DynArray<kads::LinkedList<std::pair<string, float> > >;
+	template class DynArray<kads::LinkedList<std::pair<string, double> > >;
+	template class DynArray<kads::LinkedList<std::pair<string, string> > >;
+
 }

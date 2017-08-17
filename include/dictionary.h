@@ -8,33 +8,33 @@
 #include <iostream>
 #include <ctype.h> 
 
-#include <dyn_array.h>
+
 #include <linked_list.h>
-#include <vector>
+#include <dyn_array.h>
+
 
 using namespace std;
 
 namespace kads
 {
-	template <class KeyType, class ValueType, class ContainerType>  class Dictionary {
+	template <class KeyType, class ValueType>  class Dictionary {
 		
 		public:
 
 			// default ctor and dtor
 			Dictionary();
-			Dictionary(unsigned int table_size, unsigned int (*hash)(string, unsigned int) );
+			Dictionary(unsigned int table_size, unsigned int (*hash)(KeyType, unsigned int) );
 			~Dictionary();
 
-			// inserts a new node with 'value' at the end of the array, 
-			// - size of array is incremented
-			ValueType search(KeyType key);	
-
+			// inserts a key value pair in the dictionary
 			void insert(KeyType key, ValueType value);
 
 			// delete entry with key 'key'
 			// - size of array is decremented
 			void erase(KeyType key);
 
+			// searches for an entry with the specified key and returns it
+			ValueType search(KeyType key);	
 			
 
 		private:
@@ -42,7 +42,9 @@ namespace kads
 			unsigned int size;
 
 			// pointer to hash function (set by constructor)
-			unsigned int (*pHash)(string, unsigned int);
+			unsigned int (*pHash)(KeyType, unsigned int);
+
+			DynArray<LinkedList<std::pair<KeyType, ValueType> > >* pTable;
 
 
 	};

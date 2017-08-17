@@ -72,9 +72,6 @@ namespace kads
 			// - Complexity: O(1)
 			int size();
 
-			// prints each element in the list
-			void print();
-
 			
 
 		private:

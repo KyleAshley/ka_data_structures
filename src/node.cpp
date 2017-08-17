@@ -24,9 +24,17 @@ namespace kads
 
 	}
 
+
+	// some basic Node types
 	template class Node<int>;
 	template class Node<float>;
 	template class Node<double>;
 	template class Node<string>;
+
+	// pairwise node types
+	template class Node<std::pair<string, int> >;
+	template class Node<std::pair<string, float> >;
+	template class Node<std::pair<string, double> >;
+	template class Node<std::pair<string, string> >;
 	
 }

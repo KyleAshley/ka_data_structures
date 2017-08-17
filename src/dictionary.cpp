@@ -2,7 +2,7 @@
 // dictionary.cpp
 // Author: Kyle Ashley
 // 
-// Implementation of a basic doubly linked list
+// Implementation of a basic dictionary implemented as a hash table
 /******************************************************************/
 
 #include "dictionary.h"
@@ -11,96 +11,77 @@ namespace kads
 {
 
 	// ctor
-	template <class KeyType, class ValueType, class ContainerType> 
-	Dictionary<KeyType, ValueType, ContainerType>::Dictionary(unsigned int table_size, 
-															  unsigned int (*hash)(string, unsigned int) )
+	template <class KeyType, class ValueType> 
+	Dictionary<KeyType, ValueType>::Dictionary(unsigned int table_size, 
+															  unsigned int (*hash)(KeyType, unsigned int) )
 	{
 		this->pHash = hash;
 		this->size = table_size;
+		this->pTable = new DynArray<LinkedList<pair<KeyType, ValueType> > >(table_size, LinkedList<std::pair<KeyType, ValueType> >());
+
 	}
 
 	// ctor
-	template <class KeyType, class ValueType, class ContainerType> 
-	Dictionary<KeyType, ValueType, ContainerType>::Dictionary()
+	template <class KeyType, class ValueType> 
+	Dictionary<KeyType, ValueType>::Dictionary()
 	{
 		this->pHash = NULL;
 		this->size = 0;
+		this->pTable = NULL;
 	}
 
 	// dtor
 	// free the nodes in the list
-	template <class KeyType, class ValueType, class ContainerType> 
-	Dictionary<KeyType, ValueType, ContainerType>::~Dictionary()
+	template <class KeyType, class ValueType> 
+	Dictionary<KeyType, ValueType>::~Dictionary()
 	{
 	
 	}
 
+	template <class KeyType, class ValueType> 
+	void Dictionary<KeyType, ValueType>::insert(KeyType key, ValueType value)
+	{
+		// hash an index
+		unsigned int idx = this->pHash(key, this->size);
+
+		// add to linked list at that index
+		if(pTable[idx].size() == 0)
+		{
+			cout << "empty" << endl;
+		}
+		else
+		{
+
+		}
+		
+	}
+
 	/*
-	// inserts a new node with 'value' at the end of the array, 
-	// - size of array is incremented
-	template <class KeyType, class ValueType, class ContainerType> 
-	ValueType Dictionary<KeyType, ValueType, ContainerType>::search(KeyType key)
-	{
-
-	}
-
-	template <class KeyType, class ValueType, class ContainerType> 
-	void Dictionary<KeyType, ValueType, ContainerType>::insert(KeyType key, ValueType value)
-	{
-
-	}
 
 	// delete entry with key 'key'
 	// - size of array is decremented
 	template <class KeyType, class ValueType, class ContainerType> 
-	void Dictionary<KeyType, ValueType, ContainerType>::erase(KeyType key)
+	void Dictionary<KeyType, ValueType>::erase(KeyType key)
 	{
 
 	}
+
+	// inserts a new node with 'value' at the end of the array, 
+	// - size of array is incremented
+	template <class KeyType, class ValueType, class ContainerType> 
+	ValueType Dictionary<KeyType, ValueType>::search(KeyType key)
+	{
+
+	}
+
 	*/
 
 
 	// manually specify what datatypes are acceptable
 	// custom array containers
-	template class Dictionary<int, int, DynArray<int> >;
-	template class Dictionary<int, float, DynArray<float> >;
-	template class Dictionary<int, double, DynArray<double> >;
-	template class Dictionary<int, string, DynArray<string> >;
-
-	template class Dictionary<float, int, DynArray<int> >;
-	template class Dictionary<float, float, DynArray<float> >;
-	template class Dictionary<float, double, DynArray<double> >;
-	template class Dictionary<float, string, DynArray<string> >;
-
-	template class Dictionary<double, int, DynArray<int> >;
-	template class Dictionary<double, float, DynArray<float> >;
-	template class Dictionary<double, double, DynArray<double> >;
-	template class Dictionary<double, string, DynArray<string> >;
-
-	template class Dictionary<string, int, DynArray<int> >;
-	template class Dictionary<string, float, DynArray<float> >;
-	template class Dictionary<string, double, DynArray<double> >;
-	template class Dictionary<string, string, DynArray<string> >;
-
-	// STL versions
-	template class Dictionary<int, int, vector<int> >;
-	template class Dictionary<int, float, vector<float> >;
-	template class Dictionary<int, double, vector<double> >;
-	template class Dictionary<int, string, vector<string> >;
-
-	template class Dictionary<float, int, vector<int> >;
-	template class Dictionary<float, float, vector<float> >;
-	template class Dictionary<float, double, vector<double> >;
-	template class Dictionary<float, string, vector<string> >;
-
-	template class Dictionary<double, int, vector<int> >;
-	template class Dictionary<double, float, vector<float> >;
-	template class Dictionary<double, double, vector<double> >;
-	template class Dictionary<double, string, vector<string> >;
-
-	template class Dictionary<string, int, vector<int> >;
-	template class Dictionary<string, float, vector<float> >;
-	template class Dictionary<string, double, vector<double> >;
-	template class Dictionary<string, string, vector<string> >;
+	template class Dictionary<string, int>;
+	template class Dictionary<string, float>;
+	template class Dictionary<string, double>;
+	template class Dictionary<string, string>;
 
 }

@@ -25,7 +25,6 @@ set(DATA_STRUCTURES_LIB_SRC
   ${CMAKE_SOURCE_DIR}/src/dictionary.cpp
 )
 
-
 add_library(data_structures SHARED ${DATA_STRUCTURES_LIB_SRC})
 
 # create the data structures library

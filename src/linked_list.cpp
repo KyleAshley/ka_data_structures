@@ -228,11 +228,12 @@ namespace kads
 	template <class T> 
 	T LinkedList<T>::at(int idx)
 	{
+		T defualtval;
 		// check the index is valid
 		if(idx >= this->num_nodes || idx < 0)
 		{
 			cerr << "(!) Invalid index at: " << idx << endl; 
-			return (T)(NULL);
+			return defualtval;
 
 		}
 
@@ -259,21 +260,6 @@ namespace kads
 		return this->num_nodes;
 	}
 
-	// prints the Node position and value for all Nodes in the list
-	// Complexity: O(n)
-	template <class T> 
-	void LinkedList<T>::print()
-	{
-		int i = 0;
-		Node<T>* curr = this->head;
-		while(curr != NULL)
-		{
-			cout << "Node: " << i << " Value: " << curr->value << endl;
-			curr = curr->next;
-			i++;
-		}
-
-	}
 
 
 	// manually specify what datatypes are acceptable
@@ -281,5 +267,10 @@ namespace kads
 	template class LinkedList<float>;
 	template class LinkedList<double>;
 	template class LinkedList<string>;
+
+	template class LinkedList<std::pair<string, int> >;
+	template class LinkedList<std::pair<string, float> >;
+	template class LinkedList<std::pair<string, double> >;
+	template class LinkedList<std::pair<string, string> >;
 
 }
