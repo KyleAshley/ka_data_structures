@@ -14,19 +14,18 @@ namespace kads
 	template <class KeyType, class ValueType> 
 	Dictionary<KeyType, ValueType>::Dictionary(unsigned int table_size, 
 															  unsigned int (*hash)(KeyType, unsigned int) ):
-												pTable(table_size)
+												table(table_size)
 	{
 		this->pHash = hash;
-		this->size = table_size;
-
+		this->num_elem = table_size;
 	}
 
 	// ctor
 	template <class KeyType, class ValueType> 
-	Dictionary<KeyType, ValueType>::Dictionary(): pTable(0)
+	Dictionary<KeyType, ValueType>::Dictionary(): table(0)
 	{
 		this->pHash = NULL;
-		this->size = 0;
+		this->num_elem = 0;
 	}
 
 	// dtor
@@ -40,12 +39,11 @@ namespace kads
 	void Dictionary<KeyType, ValueType>::insert(KeyType key, ValueType value)
 	{
 		// hash an index
-		unsigned int idx = this->pHash(key, this->size);
+		unsigned int idx = this->pHash(key, this->num_elem);
 
+		// create the pair and push it on to the back of the list
 		pair<KeyType, ValueType> p = std::make_pair(key, value);
-		cout << "inserting" << endl;
-		pTable[idx].push_back(p);
-		
+		this->table[idx].push_back(p);
 	}
 
 
@@ -55,14 +53,16 @@ namespace kads
 	void Dictionary<KeyType, ValueType>::erase(KeyType key)
 	{
 		// get the index
-		unsigned int idx = this->pHash(key, this->size);
+		unsigned int idx = this->pHash(key, this->num_elem);
 		
 		// search for the value in the list and delete if it exists
-		for(int i=0; i<this->pTable[idx].size(); i++)
+		for(int i=0; i<this->table[idx].size(); i++)
 		{
-			if(pTable[idx].at(i).first == key)
+			if(table[idx].at(i).first == key)
 			{
-				pTable[idx].erase(i);
+				cout << "found erasing " << i << endl;
+				this->table[idx].erase(i);
+				return;
 			}
 		}
 	}
@@ -74,24 +74,35 @@ namespace kads
 	ValueType Dictionary<KeyType, ValueType>::search(KeyType key)
 	{
 		// get the index
-		unsigned int idx = this->pHash(key, this->size);
+		unsigned int idx = this->pHash(key, this->num_elem);
 		
 		// see if the value lies in the list at that index
-		for(int i=0; i<this->pTable[idx].size(); i++)
+		for(int i=0; i<this->num_elem; i++)
 		{
-			if(pTable[idx].at(i).first == key)
+			cout << "Search list size " << this->table[idx].size() << endl;
+			if(this->table[idx].size() > 0)
 			{
-				return pTable[idx].at(i).second;
+				if(this->table[idx].at(i).first == key)
+				{
+					return this->table[idx].at(i).second;
+				}
 			}
 		}
 
 		return 0;
 	}
 
+	// returns the size of the hash table
+	template <class KeyType, class ValueType> 
+	unsigned int Dictionary<KeyType, ValueType>::size()
+	{
+		return this->num_elem;
+	}
+
 	
 
 
-	// manually specify what datatypes are acceptable
+	// manually specify what datatypes are table
 	// custom array containers
 	template class Dictionary<string, int>;
 	template class Dictionary<string, float>;

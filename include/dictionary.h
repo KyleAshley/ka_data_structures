@@ -35,16 +35,19 @@ namespace kads
 
 			// searches for an entry with the specified key and returns it
 			ValueType search(KeyType key);	
+
+			// returns the size of the hash table
+			unsigned int size();
 			
 
 		private:
 			// size of the hash table
-			unsigned int size;
+			unsigned int num_elem;
 
 			// pointer to hash function (set by constructor)
 			unsigned int (*pHash)(KeyType, unsigned int);
 
-			DynArray<LinkedList<std::pair<KeyType, ValueType> > > pTable;
+			DynArray<LinkedList<std::pair<KeyType, ValueType> > > table;
 
 
 	};

@@ -199,9 +199,19 @@ namespace kads
 		// delete the head
 		if(idx == 0)
 		{	
-			node = this->head;
-			this->head = this->head->next;
-			this->head->prev = NULL;
+			// special case for a list with one node
+			if(this->num_nodes > 1)
+			{
+				node = this->head;
+				this->head = this->head->next;
+				this->head->prev = NULL;
+			}
+			else
+			{
+				node = this->head;
+				this->head = NULL;
+				this->tail = NULL;
+			}
 		}
 		// delete the tail
 		else if(idx == this->num_nodes-1)

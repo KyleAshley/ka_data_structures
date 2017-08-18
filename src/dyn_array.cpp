@@ -143,14 +143,17 @@ namespace kads
 		T* new_arr = new T[new_size];
 
 		// copy old values over
-		for(int i=0; i<idx; i++)
-		{
-			new_arr[i] = this->pArray[i];
-		}
-		// copy old values over
-		for(int i=idx+1; i<this->num_elem; i++)
-		{
-			new_arr[i-1] = this->pArray[i];
+		int new_i = 0;
+		for(int i=0; i<this->num_elem; i++)
+		{	
+			// skip the element to be deleted
+			if(i == idx)
+				continue;
+			else
+			{
+				new_arr[new_i] = this->pArray[i];
+				new_i++;
+			}
 		}
 		
 		// copy it over

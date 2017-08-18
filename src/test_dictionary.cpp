@@ -42,10 +42,10 @@ int main( int argc, char** argv) {
 	unsigned int size = 100;
 	kads::Dictionary<string, int> dict( size, hashfunc );
 	dict.insert("hello", 10);
-	cout << dict.search("hello") << endl;
+	cout << dict.search("hello") << " " << dict.size() << endl;
 
 	dict.erase("hello");
-	cout << dict.search("hello") << endl;
+	//cout << dict.search("hello") << endl;
 
 
 	return 0;
