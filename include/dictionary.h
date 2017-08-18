@@ -17,6 +17,13 @@ using namespace std;
 
 namespace kads
 {
+
+	// basic templated dictionary class implemented as a hash table
+	// - this class was implemented as an exercise to understand 
+	//   hash tables
+	// - underlying containers are custom DynArray and LinkedList 
+	//   which function similar to STL vector and list respectively 
+	// - utilizes chaining for collision mitigation
 	template <class KeyType, class ValueType>  class Dictionary {
 		
 		public:
@@ -33,7 +40,7 @@ namespace kads
 			// - size of array is decremented
 			void erase(KeyType key);
 
-			// searches for an entry with the specified key and returns it
+			// returns index of element with matching key, NULL if not found
 			ValueType search(KeyType key);	
 
 			// returns the size of the hash table

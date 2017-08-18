@@ -14,6 +14,9 @@ using namespace std;
 
 namespace kads
 {
+	// basic templated dynamic array class
+	// - this class was implemented as an exercise to understand 
+	//   dynamic memory management
 	template <class T> class DynArray {
 		
 		public:

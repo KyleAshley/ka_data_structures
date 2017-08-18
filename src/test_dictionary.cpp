@@ -41,11 +41,27 @@ int main( int argc, char** argv) {
 	// create a dictionary
 	unsigned int size = 100;
 	kads::Dictionary<string, int> dict( size, hashfunc );
+
+	// simple test
 	dict.insert("hello", 10);
 	cout << dict.search("hello") << " " << dict.size() << endl;
 
 	dict.erase("hello");
-	//cout << dict.search("hello") << endl;
+	cout << dict.search("hello") << endl;
+
+	dict.insert("hello", 10);
+	dict.insert("hello", 11);
+	dict.insert("hello", 12);
+
+	cout << dict.search("hello") << endl;
+	dict.erase("hello");
+	cout << dict.search("hello") << endl;
+	dict.erase("hello");
+	cout << dict.search("hello") << endl;
+	dict.erase("hello");
+	cout << dict.search("hello") << endl;
+	dict.erase("hello");
+	cout << dict.search("hello") << endl;
 
 
 	return 0;

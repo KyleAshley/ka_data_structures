@@ -12,9 +12,7 @@ namespace kads
 
 	// ctor
 	template <class KeyType, class ValueType> 
-	Dictionary<KeyType, ValueType>::Dictionary(unsigned int table_size, 
-															  unsigned int (*hash)(KeyType, unsigned int) ):
-												table(table_size)
+	Dictionary<KeyType, ValueType>::Dictionary(unsigned int table_size, unsigned int (*hash)(KeyType, unsigned int) ): table(table_size)
 	{
 		this->pHash = hash;
 		this->num_elem = table_size;
@@ -35,6 +33,7 @@ namespace kads
 	{
 	}
 
+	// inserts a key value pair into the hash table
 	template <class KeyType, class ValueType> 
 	void Dictionary<KeyType, ValueType>::insert(KeyType key, ValueType value)
 	{
@@ -68,8 +67,8 @@ namespace kads
 	}
 	
 
-	// inserts a new node with 'value' at the end of the array, 
-	// - size of array is incremented
+	// searches for a node with 'key' and returns value of first occurence
+	// - NULL if nothing is found
 	template <class KeyType, class ValueType> 
 	ValueType Dictionary<KeyType, ValueType>::search(KeyType key)
 	{
@@ -77,19 +76,15 @@ namespace kads
 		unsigned int idx = this->pHash(key, this->num_elem);
 		
 		// see if the value lies in the list at that index
-		for(int i=0; i<this->num_elem; i++)
+		for(int i=0; i<this->table[idx].size() ; i++)
 		{
-			cout << "Search list size " << this->table[idx].size() << endl;
-			if(this->table[idx].size() > 0)
+			if(this->table[idx].at(i).first == key)
 			{
-				if(this->table[idx].at(i).first == key)
-				{
-					return this->table[idx].at(i).second;
-				}
+				return this->table[idx].at(i).second;
 			}
 		}
 
-		return 0;
+		return NULL;
 	}
 
 	// returns the size of the hash table

@@ -23,6 +23,9 @@ using namespace std;
 
 namespace kads
 {
+	// basic linked list class
+	// - this class was implemented as an exercise to understand 
+	//   linked list datastructures
 	template <class T> class LinkedList {
 		
 		public:
