@@ -27,15 +27,28 @@ namespace kads
 	template <class ValueType> class bTree {
 		
 		public:
+
+			// Ex: bTree<int> tree;
 			bTree();
 			~bTree();
 
 			// - inserts a new node to the tree rooted at 'node'
 			// - returns true on success, false otherwise
+			// 
+			// Ex: To build tree ->           5
+			//								2    8
+			//							  1  3  6  11
+			// Ex:  tree.insert(5);
+			// 		tree.insert(2);
+			// 		tree.insert(8);
+			// 		tree.insert(1);
+			// 		tree.insert(3);
+			// 		tree.insert(6);
+			// 		tree.insert(11);
 			bool insert(ValueType val, bNode<ValueType> *node);
 
 			// - deletes a node with a given value from the tree
-			// - returns true on success, false otherwise
+			// - returns can be ignored by the user
 			bool erase(ValueType val, bNode<ValueType> *node);
 
 			// - searches for node with 'val' to the tree rooted at 'node'
@@ -51,15 +64,15 @@ namespace kads
 			// prints the values of each node using in-order traversal
 			void preOrderPrint(bNode<ValueType> *node);
 
-			// returns the head of the tree
+			// returns a pointer to the head of the tree
 			// Complexity: O(1)
 			bNode<ValueType>* getHead();
 
-			// returns the minimum value in the tree 
+			// returns a pointer to the minimum value in the tree 
 			// Complexity: O(n)
 			bNode<ValueType>* getMin(bNode<ValueType>*);
 
-			// returns the maximum value in the tree 
+			// returns a pointer to the maximum value in the tree 
 			// Complexity: O(n)
 			bNode<ValueType>* getMax(bNode<ValueType>*);
 
