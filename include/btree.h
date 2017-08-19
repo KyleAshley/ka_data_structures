@@ -38,9 +38,26 @@ namespace kads
 			// - returns true if found, false otherwise
 			bool search(ValueType val, bNode<ValueType> *node);
 
+			// prints the values of each node using in-order traversal
+			void inOrderPrint(bNode<ValueType> *node);
+
+			// prints the values of each node using in-order traversal
+			void postOrderPrint(bNode<ValueType> *node);
+
+			// prints the values of each node using in-order traversal
+			void preOrderPrint(bNode<ValueType> *node);
+
 			// returns the head of the tree
+			// Complexity: O(1)
 			bNode<ValueType>* getHead();
 
+			// returns the minimum value in the tree 
+			// Complexity: O(n)
+			bNode<ValueType>* getMin();
+
+			// returns the maximum value in the tree 
+			// Complexity: O(n)
+			bNode<ValueType>* getMax();
 
 		private:
 			bNode<ValueType>* head;

@@ -87,11 +87,72 @@ namespace kads
 		return found;
 	}
 
+	template <class ValueType>
+	void bTree<ValueType>::inOrderPrint(bNode<ValueType> *node)
+	{
+		if(node == NULL)
+			return;
+
+		this->inOrderPrint(node->left);
+		cout << node->value << endl;
+		this->inOrderPrint(node->right);
+	}
+
+	template <class ValueType>
+	void bTree<ValueType>::preOrderPrint(bNode<ValueType> *node)
+	{
+		if(node == NULL)
+			return;
+
+		cout << node->value << endl;
+		this->inOrderPrint(node->left);
+		this->inOrderPrint(node->right);
+	}
+
+	template <class ValueType>
+	void bTree<ValueType>::postOrderPrint(bNode<ValueType> *node)
+	{
+		if(node == NULL)
+			return;
+
+		this->inOrderPrint(node->left);
+		this->inOrderPrint(node->right);
+		cout << node->value << endl;
+	}
+
 	// returns the head of the tree
 	template <class ValueType>
 	bNode<ValueType>* bTree<ValueType>::getHead()
 	{
 		return this->head;
+	}
+
+	// returns the node with maximum value of the tree
+	template <class ValueType>
+	bNode<ValueType>* bTree<ValueType>::getMin()
+	{
+		bNode<ValueType>* n = this->head;
+		if(n == NULL)
+			return NULL;
+		while(n->left != NULL)
+		{
+			n = n->left;
+		}
+		return n;
+	}
+
+	// returns the node with minimum value of the tree
+	template <class ValueType>
+	bNode<ValueType>* bTree<ValueType>::getMax()
+	{
+		bNode<ValueType>* n = this->head;
+		if(n == NULL)
+			return NULL;
+		while(n->right != NULL)
+		{
+			n = n->right;
+		}
+		return n;
 	}
 
 

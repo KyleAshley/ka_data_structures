@@ -27,12 +27,22 @@ int main( int argc, char** argv) {
 
 	cout << tree.search(1, tree.getHead()) << " " << tree.search(2, tree.getHead()) << endl;
 
-	tree.insert(10, tree.getHead());
-	tree.insert(15, tree.getHead());
 	tree.insert(2, tree.getHead());
-	tree.insert(-6, tree.getHead());
+	tree.insert(3, tree.getHead());
+	tree.insert(4, tree.getHead());
+	tree.insert(5, tree.getHead());
+
 
 	cout << tree.search(1, tree.getHead()) << " " << tree.search(2, tree.getHead()) << endl;
+
+	cout << "inorder" << endl;
+	tree.inOrderPrint(tree.getHead());
+	cout << "preorder" << endl;
+	tree.preOrderPrint(tree.getHead());
+	cout << "postorder" << endl;
+	tree.postOrderPrint(tree.getHead());
+
+	cout << tree.getMin()->value << " " << tree.getMax()->value << endl;
 
 
 
