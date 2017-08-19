@@ -20,9 +20,11 @@ include_directories(${INCLUDE_DIR})
 # data_structures lib code
 set(DATA_STRUCTURES_LIB_SRC
   ${CMAKE_SOURCE_DIR}/src/node.cpp
+  ${CMAKE_SOURCE_DIR}/src/bnode.cpp
   ${CMAKE_SOURCE_DIR}/src/linked_list.cpp
   ${CMAKE_SOURCE_DIR}/src/dyn_array.cpp
   ${CMAKE_SOURCE_DIR}/src/dictionary.cpp
+  ${CMAKE_SOURCE_DIR}/src/btree.cpp
 )
 
 add_library(data_structures SHARED ${DATA_STRUCTURES_LIB_SRC})
@@ -31,9 +33,11 @@ add_library(data_structures SHARED ${DATA_STRUCTURES_LIB_SRC})
 add_executable(test_ll ${CMAKE_SOURCE_DIR}/src/test_linked_list.cpp )
 add_executable(test_da ${CMAKE_SOURCE_DIR}/src/test_dyn_array.cpp )
 add_executable(test_dict ${CMAKE_SOURCE_DIR}/src/test_dictionary.cpp )
+add_executable(test_btree ${CMAKE_SOURCE_DIR}/src/test_btree.cpp )
 
 target_link_libraries(test_ll data_structures )
 target_link_libraries(test_da data_structures )
 target_link_libraries(test_dict data_structures )
+target_link_libraries(test_btree data_structures )
 
 

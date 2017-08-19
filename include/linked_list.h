@@ -34,45 +34,46 @@ namespace kads
 			LinkedList();
 			~LinkedList();
 
-			// create a list with 'size' nodes all initialized with 'value'
+			// 	- create a list with 'size' nodes all initialized with 'value'
 			LinkedList(int size, T value);
 
-			// inserts a new node with 'value' at the end of the list, 
-			// - size of list is incremented
-			// - Complexity: O(1)
+			// 	- inserts a new node with 'value' at the end of the list, 
+			// 	- size of list is incremented
+			// 	- Complexity: O(1)
 			void push_back(T value);	
 
-			// inserts a new node with 'value' at the front of the list, 
-			// - size of list is incremented
-			// - Complexity: O(1)
+			//  - inserts a new node with 'value' at the front of the list, 
+			// 	- size of list is incremented
+			// 	- Complexity: O(1)
 			void push_front(T value);
 
-			// erases node at the end of the list, 
-			// - size of list is decremented
-			// - Complexity: O(1)
+	
+			// 	- erases node at the end of the list, 
+			// 	- size of list is decremented
+			// 	- Complexity: O(1)
 			void pop_back();
 
-			// erases node at the front of the list, 
-			// - size of list is decremented
-			// - Complexity: O(1)
+			//	- erases node at the front of the list, 
+			// 	- size of list is decremented
+			// 	- Complexity: O(1)
 			void pop_front();
 
-			// inserts a new node with 'value' at index 'idx'
-			// - size of list is incremented
-			// - Complexity: O(n)
+			//  - inserts a new node with 'value' at index 'idx'
+			// 	- size of list is incremented
+			// 	- Complexity: O(n)
 			void insert(T value, int idx);	
 
-			// delete node at index 'idx', 
-			// - size of list is decremented
-			// - Complexity: O(n)
+			// 	- delete node at index 'idx', 
+			// 	- size of list is decremented
+			// 	- Complexity: O(n)
 			void erase(int idx);
 
-			// erase a range of elements in the list
-			// - Complexity: O(n)
+			// 	- return the value at 'idx'
+			// 	- Complexity: O(n)
 			T at(int idx);
 
-			// returns the size of the list	
-			// - Complexity: O(1)
+			//  - returns the size of the list	
+			// 	- Complexity: O(1)
 			int size();
 
 			

@@ -25,28 +25,29 @@ namespace kads
 			DynArray();
 			~DynArray();
 
-			// create a list with 'size' nodes
+			// - create a list with 'size' nodes
 			DynArray(int size);
 
-			// create a list with 'size' nodes all initialized with 'value'
+			// - create a list with 'size' nodes all initialized with 'value'
 			DynArray(int size, T value);
 
-			// inserts a new node with 'value' at the end of the array, 
+			// - inserts a new node with 'value' at the end of the array, 
 			// - size of array is incremented
 			void push_back(T value);	
 
 			void insert(T value, int idx);
 
-			// delete value at index 'idx', 
+			// - delete value at index 'idx', 
 			// - size of array is decremented
 			void erase(int idx);
 
-			// returns the value at index 'idx' with boundary checking
+			// - returns the value at index 'idx' with boundary checking
 			T at(int idx);
 
-			// returns the size of the array
+			// - returns the size of the array
 			int size();
 
+			// overloaded indexing operators
 			inline T const& operator[](int index) const { return this->pArray[index]; } 
 			inline T& operator[](int index) { return this->pArray[index]; } 
 

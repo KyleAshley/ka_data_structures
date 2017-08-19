@@ -34,6 +34,7 @@ namespace kads
 			~Dictionary();
 
 			// inserts a key value pair in the dictionary
+			// - chaining is used for collision mitigation where entries are added to the end of the list
 			void insert(KeyType key, ValueType value);
 
 			// delete entry with key 'key'
@@ -54,6 +55,8 @@ namespace kads
 			// pointer to hash function (set by constructor)
 			unsigned int (*pHash)(KeyType, unsigned int);
 
+			// pointer to the hash table table
+			// - each element contains a linked list of key/value pairs
 			DynArray<LinkedList<std::pair<KeyType, ValueType> > > table;
 
 

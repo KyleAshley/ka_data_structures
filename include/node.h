@@ -12,6 +12,7 @@ using namespace std;
 
 namespace kads
 {
+	// Basic node class for doubly linked list
 	template <class T> class Node {
 		
 		public:

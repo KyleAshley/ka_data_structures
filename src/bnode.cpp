@@ -11,6 +11,12 @@ namespace kads
 {
 
 	template <class T> 
+	bNode<T>::bNode()
+	{
+
+	}
+
+	template <class T> 
 	bNode<T>::bNode(T val)
 	{
 		this->value = val;
