@@ -34,6 +34,10 @@ namespace kads
 			// - returns true on success, false otherwise
 			bool insert(ValueType val, bNode<ValueType> *node);
 
+			// - deletes a node with a given value from the tree
+			// - returns true on success, false otherwise
+			bool erase(ValueType val, bNode<ValueType> *node);
+
 			// - searches for node with 'val' to the tree rooted at 'node'
 			// - returns true if found, false otherwise
 			bool search(ValueType val, bNode<ValueType> *node);
@@ -53,11 +57,11 @@ namespace kads
 
 			// returns the minimum value in the tree 
 			// Complexity: O(n)
-			bNode<ValueType>* getMin();
+			bNode<ValueType>* getMin(bNode<ValueType>*);
 
 			// returns the maximum value in the tree 
 			// Complexity: O(n)
-			bNode<ValueType>* getMax();
+			bNode<ValueType>* getMax(bNode<ValueType>*);
 
 		private:
 			bNode<ValueType>* head;
