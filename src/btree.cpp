@@ -19,7 +19,7 @@ namespace kads
 	template <class ValueType> 
 	bTree<ValueType>::~bTree()
 	{
-
+		
 	}
 
 
